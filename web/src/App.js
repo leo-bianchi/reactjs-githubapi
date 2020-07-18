@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import "./global.css";
 import "./App.css";
-import "./Sidebar.css";
 
 import api from "./services/api";
 
