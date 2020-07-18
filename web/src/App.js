@@ -5,15 +5,15 @@ import "./App.css";
 
 import api from "./services/api";
 
-import DevItem from "./Components/DevItem/index";
-import DevForm from "./Components/DevForm/index";
+import DevItem from "./Components/DevItem/";
+import DevForm from "./Components/DevForm/";
 
 function App() {
   const [devs, setDevs] = useState([]);
 
   useEffect(() => {
     async function loadDevs() {
-      const response = await api.get("/users");
+      const response = await api.get("/devs");
 
       setDevs(response.data);
     }
@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   async function handleAddDev(data) {
-    const response = await api.post("/user", data);
+    const response = await api.post("/devs", data);
 
     setDevs([...devs, response.data]);
   }

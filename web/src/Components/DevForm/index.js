@@ -3,9 +3,8 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 
 function DevForm({ onSubmit }) {
-  const [github_username, setgithub_username] = useState("");
+  const [github_username, setGithubUsername] = useState("");
   const [techs, setTechs] = useState("");
-
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
 
@@ -13,6 +12,7 @@ function DevForm({ onSubmit }) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
+
         setLatitude(latitude);
         setLongitude(longitude);
       },
@@ -20,7 +20,7 @@ function DevForm({ onSubmit }) {
         console.log(err);
       },
       {
-        timeout: 27000,
+        timeout: 30000,
       }
     );
   }, []);
@@ -35,28 +35,26 @@ function DevForm({ onSubmit }) {
       longitude,
     });
 
-    setgithub_username("");
+    setGithubUsername("");
     setTechs("");
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-block">
-        <label htmlFor="github_username">Usuário do github</label>
+        <label htmlFor="github_username">Usuário do Github</label>
         <input
-          type="text"
           name="github_username"
           id="github_username"
           required
           value={github_username}
-          onChange={(e) => setgithub_username(e.target.value)}
+          onChange={(e) => setGithubUsername(e.target.value)}
         />
       </div>
 
       <div className="input-block">
         <label htmlFor="techs">Tecnologias</label>
         <input
-          type="text"
           name="techs"
           id="techs"
           required
@@ -91,7 +89,7 @@ function DevForm({ onSubmit }) {
         </div>
       </div>
 
-      <input type="submit" value="Salvar" />
+      <input type="submit" value="Salvar"></input>
     </form>
   );
 }
